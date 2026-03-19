@@ -21,7 +21,6 @@
     }
 
     a { color: #e87722; text-decoration: none; }
-    a:visited { color: #ffffff; }
     a:hover { color: #000000; }
 
     body::before {
@@ -162,7 +161,7 @@
 
     #sadBubble.visible { opacity: 1; }
 
-    #mailbox {
+    #rsvpLink {
       position: fixed;
       bottom: 10px;
       left: 25px;
@@ -171,36 +170,19 @@
       cursor: pointer !important;
       user-select: none;
       transition: transform 0.2s ease;
-    }
-
-    #mailbox:hover { transform: scale(1.2); }
-
-    #copiedMsg {
-      position: fixed;
-      bottom: 40px;
-      left: 5px;
-      background: rgba(0,0,0,0.75);
-      border: 1px solid white;
+      text-decoration: none;
       color: white;
-      font-family: Times New Roman, sans-serif;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      z-index: 9997;
     }
 
-    #copiedMsg.show { opacity: 1; }
+    #rsvpLink:hover { transform: scale(1.2); color: white; }
+    #rsvpLink:visited { color: white; }
 
   </style>
 </head>
 <body>
 
-    <div id="sadBubble">it's ok if ur busy ( •̯́ ^ •̯̀) <br>pls email me with ur availability and i'll set up a separate date for u!</div>
-    <div id="mailbox" onclick="copyEmail()">💌</div>
-    <div id="copiedMsg">copied! :3c</div>
+    <div id="sadBubble">it's ok if ur busy ( •̯́ ^ •̯̀) <br>pls update me with ur availability and i'll set up a separate date for u!</div>
+    <a id="rsvpLink" href="https://docs.google.com/spreadsheets/d/1J2Uh-riiFfQxzyi-cy4R7FsngZCbCo2TWmuKJjA7ujA/edit?usp=sharing" target="_blank">📅</a>
     <img src="https://i.pinimg.com/originals/80/7b/5c/807b5c4b02e765bb4930b7c66662ef4b.gif" id="bongocat">
     <audio id="clickSound" src="https://www.myinstants.com/media/sounds/meow-3.mp3" preload="auto"></audio>
     <audio id="sadViolin" src="https://www.myinstants.com/media/sounds/tf_nemesis.mp3" preload="auto"></audio>
@@ -300,16 +282,6 @@
             });
         });
     });
-
-    function copyEmail() {
-        navigator.clipboard.writeText("2026bdayinv.identical222@passinbox.com").then(function() {
-            const msg = document.getElementById("copiedMsg");
-            msg.classList.add("show");
-            setTimeout(function() {
-                msg.classList.remove("show");
-            }, 2000);
-        });
-    }
 
     function start() {
         document.getElementById("startScreen").classList.add("hidden");
